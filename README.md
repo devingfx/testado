@@ -36,14 +36,13 @@ import 'testado'
 
 #### General syntax
 
-**testado** works heavily on template strings and tag functions, so obvioulsy it should run in an environment 
-supporting this... 
+**testado** works heavily on template strings and tag functions, so obvioulsy it should run in an environment supporting this...   
 Even if you can "fake" template calls by providing 2 arrays (see [non template string calls](#non-template-string-calls)).
 
 ```javascript
 tag `string` ( ...content... )
 ```
-Each tag function returns a function (exception are noticed), so you to give arguments in parenthesis.
+Each tag function returns a function (exception are noticed), so you have to give arguments in parenthesis.
 
 #### test
 The 1st and only tag accessible from your script root is `test`:
@@ -51,8 +50,8 @@ The 1st and only tag accessible from your script root is `test`:
 ```javascript
 test `description of tests group` ( Function )
 ```
-The function given to test can be async (it's treated async by default), and will
-receive an object you can destructure to get the subsequent tag functions.
+The function given to `test` can be async (it's treated async by default), and will
+receive an object you can destructure to get the subsequent tag functions.  
 ⚠️ it's important to always get fresh nested tags to maintain hierarchy (see [nesting test groups](#nesting-test-groups))
 
 ```javascript
@@ -80,5 +79,26 @@ test `description of tests group` ( async ({ok,ko,log,error})=> {
 
 #### Nesting test groups
 
-You can 
-To preserve the 
+You can nest `test` in `test` by destructuring a fresh new tag function for this level of nesting.
+To preserve the nesting hierachy of the resulting groups you **MUST** use a `test` tag from nest function arguments:
+
+
+```javascript
+test `description of tests group` ( async ({test})=> {
+
+	await test `description of tests group` ( async ({test})=> {
+
+		await test `description of tests group` ( async ({ok})=> {
+
+			ok `test leaf` ( true )
+		
+		})
+	
+	})
+	
+})
+```
+
+
+#### non template string calls
+☢️ @TODO write docs
