@@ -1,0 +1,27 @@
+{
+  "name": "testado",
+  "version": "1.0.0",
+  "description": "Simple test runner, with async and icons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devingfx/testado.git"
+  },
+  "keywords": [
+    "test",
+    "testado",
+    "provo",
+    "async",
+    "await",
+    "emoji"
+  ],
+  "author": "Thomas Di Grégorio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devingfx/testado/issues"
+  },
+  "homepage": "https://github.com/devingfx/testado#readme"
+}
