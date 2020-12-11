@@ -85,11 +85,15 @@ To preserve the nesting hierachy of the resulting groups you **MUST** use a `tes
 
 ```javascript
 test `description of tests group` ( async ({test})=> {
-	                                         ^
-	       /---------------------------------/ 
+	                                      ^
+	         ____________________________/ 
+	        /
 	       v
 	await test `nested tests group` ( async ({test})=> {
-
+	                                        ^
+	             __________________________/ 
+	            /
+	           v
 		await test `nested tests group` ( async ({ok})=> {
 
 			ok `test leaf` ( true )
