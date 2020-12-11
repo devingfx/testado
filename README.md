@@ -80,15 +80,17 @@ test `description of tests group` ( async ({ok,ko,log,error})=> {
 #### Nesting test groups
 
 You can nest `test` in `test` by destructuring a fresh new tag function for this level of nesting.
-To preserve the nesting hierachy of the resulting groups you **MUST** use a `test` tag from nest function arguments:
+To preserve the nesting hierachy of the resulting groups you **MUST** use a `test` tag from nested function's arguments:
 
 
 ```javascript
 test `description of tests group` ( async ({test})=> {
+	                                         ^
+	       /---------------------------------/ 
+	       v
+	await test `nested tests group` ( async ({test})=> {
 
-	await test `description of tests group` ( async ({test})=> {
-
-		await test `description of tests group` ( async ({ok})=> {
+		await test `nested tests group` ( async ({ok})=> {
 
 			ok `test leaf` ( true )
 		
