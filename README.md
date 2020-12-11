@@ -90,10 +90,10 @@ test `description of tests group` ( async ({test})=> {
 	        /
 	       v
 	await test `nested tests group` ( async ({test})=> {
-	                                        ^
-	             __________________________/ 
-	            /
-	           v
+		                                    ^
+		         __________________________/ 
+		        /
+		       v
 		await test `nested tests group` ( async ({ok})=> {
 
 			ok `test leaf` ( true )
