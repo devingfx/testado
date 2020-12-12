@@ -76,6 +76,7 @@ test `description of tests group` ( async ({ok,ko,log,error})=> {
 	ok `not played test` ( false )
 })
 ```
+![exemple](exemple.png)
 
 #### Nesting test groups
 
@@ -89,12 +90,12 @@ test `description of tests group` ( async ({test})=> {
 	         ____________________________/ 
 	        /
 	       v
-	await test `nested tests group` ( async ({test})=> {
+	await test `nested tests group 1` ( async ({test})=> {
 		                                    ^
 		         __________________________/ 
 		        /
 		       v
-		await test `nested tests group` ( async ({ok})=> {
+		await test `nested tests group 2` ( async ({ok})=> {
 
 			ok `test leaf` ( true )
 		
@@ -104,7 +105,7 @@ test `description of tests group` ( async ({test})=> {
 	
 })
 ```
-
+![nesting](nested.png)
 
 #### non template string calls
 ☢️ @TODO write docs
