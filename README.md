@@ -74,14 +74,13 @@ This will give you in the console:
 ![substitutions](substitutions.png)
 
 
-### test
+### `test`
 The 1st and only tag accessible from your script root is `test`:
 
 ```javascript
 test `description of tests group` ( Function )
 ```
-The function given to `test` can be async (it's treated async by default), and will
-receive an object you can destructure to get the subsequent tag functions.  
+The function given to `test` can be async (it's treated async by default), and will receive an object you can destructure to get the subsequent tag functions.  
 ⚠️ it's important to always get fresh nested tags to maintain hierarchy (see [nesting test groups](#nesting-test-groups))
 
 ```javascript
