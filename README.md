@@ -70,7 +70,7 @@ test `${'font-size:1.3em;text-shadow:0 1px 2px white; color:cyan'}cCustom styles
 })
 ```
 
-This will give you in the console:
+This will give you in the console:  
 ![substitutions](substitutions.png)
 
 
