@@ -52,10 +52,11 @@ const _test = parentStack=> (ss,...pp)=> async fn=> {
 		// _error(stack)`${e.type}s`
 	}
 	finally {
-		!stack.length && (stack.icon = '☢️')
+		!stack.count && (stack.icon = '☢️')
 		parentStack
 			? parentStack.push( stack )
 			: log_( stack )
+		return stack
 	}
 }
 
@@ -71,7 +72,7 @@ const log_ = t=> {
 	}
 	if( t.icon )
 		t.ss[0] = `${t.icon} ${t.ss[0]}`
-	if( t.count )
+	if( t.length )
 	{
 		t.sspp` (${t.value}s/${t.total}s) `
 		t.total > 100
@@ -94,7 +95,8 @@ const log_ = t=> {
 
 // emojis available: ✔️❌⚠️☢️⛔️❗️❕❓❔📣📢👁‍🗨💬💭🗯
 
-console.groupCollapsed(`Tests legend`)
+groupClosed `Tests legend`
+log `💬: this is a simple message not counted as a test`
 log `✔️: all tests passed successfully`
 log `⚠️: some tests not passed`
 log `❌: all tests not passed`
@@ -105,3 +107,6 @@ console.groupEnd()
 return _test()
 
 })()
+
+if( typeof module != 'undefined' )
+	module.exports = test
