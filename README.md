@@ -46,6 +46,8 @@ Each tag function returns a function (exception are noticed), so you have to giv
 The string provided is a **full template and can use substitutions**, but these substitution are transformed into the **C-like syntax** ('foo %s bar %o qwe') and given to the console's corresponding method (see [Using string substitutions](https://developer.mozilla.org/en-US/docs/Web/API/console#Using_string_substitutions)).  
 This means that you have to give the type letter after each template string substitutions:
 
+Notice the type letter in `${}s`, `${}d`, `${}f` or `${}o`, this indicates the console how to render the given subsituted thing:
+
 ```javascript
 log `show a string: ${'foo'}s ...`
 log `show a string as object: ${'foo'}o ...`
@@ -59,8 +61,16 @@ log `show an object: ${{foo:'bar',qwe: 42}}o ...`
 log `show an object: ${document.head}o ...`
 log `show an object with dirxml: ${document.head}O ...`
 ```
-Notice the type letter in `${}s`, `${}d` or `${}o`, this indicates the console how to render the given subsituted thing:
 
+Console CSS can be used with `${}c` containing a CSS string. Insert a CSS substitution with an empty string to reset styles:
+
+```javascript
+test `${'font-size:1.3em;text-shadow:0 1px 2px white; color:cyan'}cCustom styles` ( ({log})=> {
+	log `show style with CSS: ${'border:1px dashed; background:rebeccapurple'}c Hello ${''}c ...`
+})
+```
+
+This will give you in the console:
 ![substitutions](substitutions.png)
 
 
