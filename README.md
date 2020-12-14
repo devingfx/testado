@@ -11,24 +11,24 @@ Simple test runner, with async and icons.
 Create an HTML document and insert this `<script>` tag:
 
 ```html
-<script src="https://unpkg.org/skdlfjslkfjs"></script>
+<script src="https://unpkg.com/testado"></script>
 <script>
 /* Your tests here */
 </script>
 ```
 
 ### nodejs
-⚠️ not tested
+⚠️ nodejs support is not well tested
 
 `npm install --save-dev testado`
 
 ```javascript
-require('testado')
+const test = require('testado')
 /* Your tests here */
 ```
-or
+or with [esm](https://www.npmjs.com/package/esm-cli)
 ```javascript
-import 'testado'
+import test from 'testado'
 /* Your tests here */
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "testado",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple test runner, with async and icons",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,10 @@
     "await",
     "emoji"
   ],
-  "author": "Thomas Di Grégorio",
+  "author": {
+    "name": "Thomas Di Grégorio",
+    "email": "dig@p2p.legal"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/devingfx/testado/issues"
