@@ -1,7 +1,7 @@
 # testado
 Simple test runner, with async and icons.
 
-### Meaning of "testado"
+#### Meaning of "testado"
 "testado" is Esperanto and translated to English means testing.
 
 ## Usage
@@ -32,9 +32,9 @@ import 'testado'
 /* Your tests here */
 ```
 
-### Tests synthax
+## Tests syntax
 
-#### General syntax
+### General syntax
 
 **testado** works heavily on template strings and tag functions, so obvioulsy it should run in an environment supporting this...   
 Even if you can "fake" template calls by providing 2 arrays (see [non template string calls](#non-template-string-calls)).
@@ -43,8 +43,28 @@ Even if you can "fake" template calls by providing 2 arrays (see [non template s
 tag `string` ( ...content... )
 ```
 Each tag function returns a function (exception are noticed), so you have to give arguments in parenthesis.
+The string provided is a **full template and can use substitutions**, but these substitution are transformed into the **C-like syntax** ('foo %s bar %o qwe') and given to the console's corresponding method (see [Using string substitutions](https://developer.mozilla.org/en-US/docs/Web/API/console#Using_string_substitutions)).  
+This means that you have to give the type letter after each template string substitutions:
 
-#### test
+```javascript
+log `show a string: ${'foo'}s ...`
+log `show a string as object: ${'foo'}o ...`
+log `show an integer: ${42.5}i ...`
+log `show an integer formatted: ${42.5}.5d ...`  // 📣 Note: Precision formatting doesn't work in Chrome
+log `show an integer as object: ${42}o ...`
+log `show a float: ${Math.PI}f ...`
+log `show a float: ${Math.PI}.2f ...`  // 📣 Note: Precision formatting doesn't work in Chrome
+log `show a float as object: ${Math.PI}o ...`
+log `show an object: ${{foo:'bar',qwe: 42}}o ...`
+log `show an object: ${document.head}o ...`
+log `show an object with dirxml: ${document.head}O ...`
+```
+Notice the type letter in `${}s`, `${}d` or `${}o`, this indicates the console how to render the given subsituted thing:
+
+![substitutions](substitutions.png)
+
+
+### test
 The 1st and only tag accessible from your script root is `test`:
 
 ```javascript
@@ -78,7 +98,7 @@ test `description of tests group` ( async ({ok,ko,log,error})=> {
 ```
 ![exemple](exemple.png)
 
-#### Nesting test groups
+### Nesting test groups
 
 You can nest `test` in `test` by destructuring a fresh new tag function for this level of nesting.
 To preserve the nesting hierachy of the resulting groups you **MUST** use a `test` tag from nested function's arguments:
@@ -107,5 +127,5 @@ test `description of tests group` ( async ({test})=> {
 ```
 ![nesting](nested.png)
 
-#### non template string calls
+### non template string calls
 ☢️ @TODO write docs
